@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const sensorData = require('./routes/api/sensor_data');
+const buttonAPI = require('./routes/api/buttons');
 
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose
 	.catch(err => console.log(err));
 
 app.use('/api/sensor', sensorData);
+app.use('/api/button', buttonAPI);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`server run on port ${port}`));
