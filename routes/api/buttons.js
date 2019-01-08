@@ -2,7 +2,6 @@ const express = require('express');
 const axios = require('axios');
 
 const router = express.Router();
-const ifttt = require('../../config/keys').webhookURL;
 
 router.get('/', (req, res) => {
 	const action = req.query.action;
