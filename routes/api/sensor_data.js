@@ -91,4 +91,32 @@ const processSensorData = sensor => {
 	};
 };
 
-module.exports = router;
+const deleteOlder = () => {
+	// Sensor.find()
+	// 	.then(infos => {
+	// 		console.log(infos.length);
+	// 		const datas = infos.filter(it => it.date.getTime() < new Date().getTime() - 86400000);
+	// 		console.log(datas.length);
+	// 		datas.forEach(data => {
+	// 			const id = data._id;
+	// 			console.log(id);
+	// 			Sensor.findByIdAndDelete(id, (err, resp) => {
+	// 				if (err) {
+	// 					console.log(err);
+	// 				} else {
+	// 					console.log(resp);
+	// 				}
+	// 			});
+	// 		});
+	// 	})
+	// 	.catch(err => console.log(err));
+	Sensor.deleteMany({}, (err, resp) => {
+		if (err) {
+			console.log(err);
+		} else {
+			console.log(resp);
+		}
+	});
+};
+
+module.exports = { router, deleteOlder };
